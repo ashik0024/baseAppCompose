@@ -9,6 +9,7 @@ import androidx.room.Room
 import com.nexdecade.composebase.network.services.GetPokemonService
 import com.nexdecade.composebase.roomDb.AppDatabase
 import com.nexdecade.composebase.roomDb.PokemonDao
+import com.nexdecade.composebase.roomDb.PokemonRemoteKeysDao
 
 
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -50,4 +51,9 @@ object AppModule {
     @Provides
     fun providePokemonDao(db: AppDatabase): PokemonDao =
         db.pokemonDao()
+    
+    @Provides
+    fun providePokemonRemoteKeyDao(db: AppDatabase): PokemonRemoteKeysDao =
+        db.remoteKeysDao()
+    
 }

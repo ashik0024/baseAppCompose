@@ -5,11 +5,11 @@ import androidx.room.RoomDatabase
 import com.nexdecade.composebase.network.responseClass.Pokemon
 
 @Database(
-    entities = [Pokemon::class],
+    entities = [Pokemon::class, PokemonRemoteKeys::class],
     version = 1,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
-    
     abstract fun pokemonDao(): PokemonDao
+    abstract fun remoteKeysDao(): PokemonRemoteKeysDao
 }

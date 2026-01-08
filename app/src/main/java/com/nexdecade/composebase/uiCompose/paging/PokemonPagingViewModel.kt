@@ -14,11 +14,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class PokemonPagingViewModel @Inject constructor(
-    private val getPokemonPagingService: GetPokemonPagingService
+    getPokemonPagingService: GetPokemonPagingService
 ) : ViewModel() {
     
-    // Expose the paging data as Flow<PagingData<Pokemon>>
-    val pokemonPagingFlow: Flow<PagingData<Pokemon>> =
+    val pokemonPagingFlow =
         getPokemonPagingService.getPokemonPaging()
             .cachedIn(viewModelScope)
 }
+
+

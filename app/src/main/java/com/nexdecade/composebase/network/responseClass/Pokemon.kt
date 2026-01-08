@@ -16,7 +16,7 @@ data class Pokemon(
    @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
     @SerialName("name")
-    val name: String? = "",
+    val name: String = "",
     @SerialName("url")
     val url: String? = "",
 ):Parcelable

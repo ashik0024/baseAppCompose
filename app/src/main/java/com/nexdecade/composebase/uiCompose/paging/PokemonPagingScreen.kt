@@ -1,7 +1,14 @@
 package com.nexdecade.composebase.uiCompose.paging
 
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
@@ -13,18 +20,38 @@ import com.nexdecade.composebase.uiCompose.nonpaging.PokemonItem
 
 
 @Composable
+
 fun PokemonPagingScreen(viewModel: PokemonPagingViewModel = hiltViewModel()) {
     val lazyPagingItems = viewModel.pokemonPagingFlow.collectAsLazyPagingItems()
     
+    // Show loading / error state
+    val isLoading = lazyPagingItems.loadState.refresh is LoadState.Loading
+    val isError = lazyPagingItems.loadState.refresh is LoadState.Error
+    
+    if (isLoading) {
+        // Show a loading UI while first page is fetched
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            CircularProgressIndicator()
+        }
+        return
+    }
+    
+    if (isError) {
+        // Show error UI
+        val error = lazyPagingItems.loadState.refresh as LoadState.Error
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text("Error: ${error.error.localizedMessage}")
+        }
+        return
+    }
+    
     LazyColumn {
-  
         items(
             count = lazyPagingItems.itemCount,
-
+            key = lazyPagingItems.itemKey { it.id }
         ) { index ->
-            val pokemon = lazyPagingItems[index]
-            pokemon?.let {
-                PokemonItem(pokemon = it)
+            lazyPagingItems[index]?.let { pokemon ->
+                PokemonItem(pokemon)
             }
         }
     }
