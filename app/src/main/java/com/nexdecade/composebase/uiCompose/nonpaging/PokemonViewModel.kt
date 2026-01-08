@@ -21,19 +21,44 @@ class PokemonViewModel @Inject constructor(
     private val repository: PokemonRepository
 ) : ViewModel() {
     
-    private val _uiState = MutableStateFlow<PokemonUiState>(Loading)
+    private val _uiState = MutableStateFlow<PokemonUiState>(PokemonUiState.Loading)
     val uiState: StateFlow<PokemonUiState> = _uiState.asStateFlow()
+    
+    private val _searchQuery = MutableStateFlow("")
+    val searchQuery: StateFlow<String> = _searchQuery.asStateFlow()
+    
+    private var fullPokemonList: List<Pokemon> = emptyList() // cached list
+    
+    init {
+        fetchPokemon()
+    }
     
     fun fetchPokemon() {
         viewModelScope.launch {
-            _uiState.value = Loading
+            _uiState.value = PokemonUiState.Loading
             
-            _uiState.value = when (val result = repository.getPokemon()) {
-                is Result.Success -> Success(result.data)
-                is Result.Error -> Error(result.exception.message ?: "Unknown error")
-                Result.Loading -> Loading
+            when (val result = repository.getPokemon()) {
+                is Result.Success -> {
+                    fullPokemonList = result.data
+                    _uiState.value = PokemonUiState.Success(result.data)
+                }
+                is Result.Error -> _uiState.value =
+                    PokemonUiState.Error(result.exception.message ?: "Unknown error")
+                Result.Loading -> _uiState.value = PokemonUiState.Loading
             }
         }
+    }
+    
+    fun updateSearchQuery(query: String) {
+        _searchQuery.value = query
+        filterPokemon(query)
+    }
+    
+    private fun filterPokemon(query: String) {
+        val filtered = if (query.isBlank()) fullPokemonList
+        else fullPokemonList.filter { it.name?.contains(query, ignoreCase = true) == true }
+        
+        _uiState.value = PokemonUiState.Success(filtered)
     }
 }
 
