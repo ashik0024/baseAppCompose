@@ -5,7 +5,10 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import android.content.Context
+import androidx.room.Room
 import com.nexdecade.composebase.network.services.GetPokemonService
+import com.nexdecade.composebase.roomDb.AppDatabase
+import com.nexdecade.composebase.roomDb.PokemonDao
 
 
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -33,4 +36,18 @@ object AppModule {
     fun providePokemonService(): GetPokemonService {
         return GetPokemonService()
     }
+    @Provides
+    @Singleton
+    fun provideDatabase(
+        @ApplicationContext context: Context
+    ): AppDatabase =
+        Room.databaseBuilder(
+            context,
+            AppDatabase::class.java,
+            "pokemon_db"
+        ).build()
+    
+    @Provides
+    fun providePokemonDao(db: AppDatabase): PokemonDao =
+        db.pokemonDao()
 }

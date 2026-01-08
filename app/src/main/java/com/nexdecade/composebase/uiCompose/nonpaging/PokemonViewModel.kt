@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nexdecade.composebase.Result
+import com.nexdecade.composebase.network.repository.PokemonRepository
 import com.nexdecade.composebase.uiCompose.nonpaging.PokemonUiState.*
 import com.nexdecade.composebase.network.responseClass.Pokemon
 import com.nexdecade.composebase.network.services.GetPokemonService
@@ -17,36 +18,20 @@ import kotlinx.coroutines.flow.asStateFlow
 
 @HiltViewModel
 class PokemonViewModel @Inject constructor(
-    private val getPokemonService: GetPokemonService
+    private val repository: PokemonRepository
 ) : ViewModel() {
     
-    // State Management
     private val _uiState = MutableStateFlow<PokemonUiState>(Loading)
     val uiState: StateFlow<PokemonUiState> = _uiState.asStateFlow()
     
-    // Action
     fun fetchPokemon() {
         viewModelScope.launch {
-            // Set loading state
             _uiState.value = Loading
             
-            // Call the service
-            val result = getPokemonService.getPokemonData()
-            
-            // Handle result
-            _uiState.value = when (result) {
-                is Result.Success -> {
-                    Log.d("fetchPokemonDAta", ": "+result.data)
-                    Success(pokemonList = result.data)
-                }
-                is Result.Error -> {
-                    Log.d("fetchPokemonDAta error",
-                        (":" + result.exception.message) ?: "Unknown error"
-                    )
-                    Error(errorMessage = result.exception.message ?: "Unknown error")
-                }
-                
-                Result.Loading -> TODO()
+            _uiState.value = when (val result = repository.getPokemon()) {
+                is Result.Success -> Success(result.data)
+                is Result.Error -> Error(result.exception.message ?: "Unknown error")
+                Result.Loading -> Loading
             }
         }
     }

@@ -26,8 +26,8 @@ class MainActivity : ComponentActivity() {
                     .statusBarsPadding()        // only status bar
 //                    .navigationBarsPadding()
                 ) { innerPadding ->
-//                    PokemonScreen()
-                    PokemonPagingScreen()
+                    PokemonScreen()
+//                    PokemonPagingScreen()
                 }
             }
         }
