@@ -1,4 +1,4 @@
-package com.nexdecade.composebase.network.repository
+package com.nexdecade.composebase.utils
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -7,7 +7,6 @@ import java.io.IOException
 
 import okhttp3.ResponseBody.Companion.toResponseBody
 import retrofit2.Response
-import com.nexdecade.composebase.Result
 import com.nexdecade.composebase.homePage.domain.model.response.Pokemon
 
 suspend fun <T> safeApiCall(apiCall: suspend () -> T): Result<List<Pokemon>> {

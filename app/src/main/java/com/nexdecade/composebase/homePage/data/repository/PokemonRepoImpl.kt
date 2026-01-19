@@ -1,13 +1,11 @@
 package com.nexdecade.composebase.homePage.data.repository
 
 import android.util.Log
-import com.nexdecade.composebase.Result
+import com.nexdecade.composebase.utils.Result
 import com.nexdecade.composebase.homePage.data.remote.PokemonApi
 import com.nexdecade.composebase.homePage.domain.model.response.Pokemon
 import com.nexdecade.composebase.homePage.domain.repository.PokemonRepo
-import com.nexdecade.composebase.network.repository.PokemonRepository
-import com.nexdecade.composebase.network.retrofit.RetrofitClient.apiService
-import com.nexdecade.composebase.network.services.GetPokemonService
+
 import com.nexdecade.composebase.roomDb.PokemonDao
 import javax.inject.Inject
 

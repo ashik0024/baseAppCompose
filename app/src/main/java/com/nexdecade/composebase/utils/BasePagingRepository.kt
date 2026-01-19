@@ -1,4 +1,4 @@
-package com.nexdecade.composebase
+package com.nexdecade.composebase.utils
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig

@@ -1,4 +1,4 @@
-package com.nexdecade.composebase.network.services
+package com.nexdecade.composebase.homepagePaging.data.repository
 
 import android.util.Log
 import androidx.paging.ExperimentalPagingApi
@@ -7,13 +7,13 @@ import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
 import com.nexdecade.composebase.homePage.domain.model.response.Pokemon
-import com.nexdecade.composebase.network.retrofit.ApiInterface
+import com.nexdecade.composebase.homepagePaging.data.remote.PokemonPagingApi
 import com.nexdecade.composebase.roomDb.AppDatabase
 import com.nexdecade.composebase.roomDb.PokemonRemoteKeys
 
 @OptIn(ExperimentalPagingApi::class)
 class PokemonRemoteMediator(
-    private val api: ApiInterface,
+    private val api: PokemonPagingApi,
     private val db: AppDatabase
 ) : RemoteMediator<Int, Pokemon>() {
     

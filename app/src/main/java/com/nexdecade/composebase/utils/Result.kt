@@ -1,4 +1,4 @@
-package com.nexdecade.composebase
+package com.nexdecade.composebase.utils
 
 sealed class Result<out T> {
     data class Success<T>(val data: T) : Result<T>()

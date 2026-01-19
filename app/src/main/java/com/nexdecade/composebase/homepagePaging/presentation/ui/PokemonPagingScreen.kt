@@ -1,4 +1,4 @@
-package com.nexdecade.composebase.uiCompose.paging
+package com.nexdecade.composebase.homepagePaging.presentation.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -14,6 +14,7 @@ import androidx.paging.compose.collectAsLazyPagingItems
 import androidx.paging.compose.itemKey
 
 import com.nexdecade.composebase.homePage.presentation.ui.PokemonItem
+import com.nexdecade.composebase.homepagePaging.presentation.viewmodel.PokemonPagingViewModel
 
 
 @Composable

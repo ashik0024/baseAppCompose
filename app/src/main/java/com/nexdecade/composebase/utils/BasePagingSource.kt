@@ -1,4 +1,4 @@
-package com.nexdecade.composebase
+package com.nexdecade.composebase.utils
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -6,7 +6,7 @@ import androidx.paging.PagingState
 /**
  * Generic PagingSource for APIs using limit & offset style paging
  * @param T The type of item (e.g., Pokemon)
- * @param R The type of API response (needs a `results: List<T>` field)
+ * @param com.nexdecade.composebase.R The type of API response (needs a `results: List<T>` field)
  * @param apiCall Lambda to call your API
  */
 

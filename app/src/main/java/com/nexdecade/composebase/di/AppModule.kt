@@ -6,7 +6,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import android.content.Context
 import androidx.room.Room
-import com.nexdecade.composebase.network.services.GetPokemonService
+
 import com.nexdecade.composebase.roomDb.AppDatabase
 import com.nexdecade.composebase.roomDb.PokemonDao
 import com.nexdecade.composebase.roomDb.PokemonRemoteKeysDao
@@ -32,11 +32,11 @@ object AppModule {
 //    }
     
     
-    @Provides
-    @Singleton
-    fun providePokemonService(): GetPokemonService {
-        return GetPokemonService()
-    }
+//    @Provides
+//    @Singleton
+//    fun providePokemonService(): GetPokemonService {
+//        return GetPokemonService()
+//    }
     @Provides
     @Singleton
     fun provideDatabase(

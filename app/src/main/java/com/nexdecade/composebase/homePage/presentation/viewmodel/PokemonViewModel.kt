@@ -2,9 +2,8 @@ package com.nexdecade.composebase.homePage.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.nexdecade.composebase.Result
+import com.nexdecade.composebase.utils.Result
 import com.nexdecade.composebase.homePage.data.repository.PokemonRepoImpl
-import com.nexdecade.composebase.network.repository.PokemonRepository
 import com.nexdecade.composebase.homePage.presentation.viewmodel.PokemonUiState.*
 import com.nexdecade.composebase.homePage.domain.model.response.Pokemon
 import dagger.hilt.android.lifecycle.HiltViewModel

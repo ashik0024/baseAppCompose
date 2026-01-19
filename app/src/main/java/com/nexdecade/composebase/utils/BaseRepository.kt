@@ -1,11 +1,11 @@
-package com.nexdecade.composebase.network.repository
+package com.nexdecade.composebase.utils
 
 import java.io.IOException
 import retrofit2.HttpException
 import retrofit2.Response
 
 import okhttp3.ResponseBody.Companion.toResponseBody
-import com.nexdecade.composebase.Result
+
 open class BaseRepository {
 
     protected suspend fun <T> safeApiCall(call: suspend () -> Response<T>): Result<T> {

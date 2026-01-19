@@ -1,4 +1,4 @@
-package com.nexdecade.composebase.network.repository
+package com.nexdecade.composebase.utils
 
 import okio.IOException
 import retrofit2.HttpException
