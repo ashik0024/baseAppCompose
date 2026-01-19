@@ -8,7 +8,7 @@ import java.io.IOException
 import okhttp3.ResponseBody.Companion.toResponseBody
 import retrofit2.Response
 import com.nexdecade.composebase.Result
-import com.nexdecade.composebase.network.responseClass.Pokemon
+import com.nexdecade.composebase.homePage.domain.model.response.Pokemon
 
 suspend fun <T> safeApiCall(apiCall: suspend () -> T): Result<List<Pokemon>> {
     return withContext(Dispatchers.IO) {

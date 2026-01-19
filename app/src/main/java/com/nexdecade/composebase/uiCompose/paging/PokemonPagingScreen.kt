@@ -6,17 +6,14 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
-import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.collectAsLazyPagingItems
-import androidx.paging.compose.itemContentType
 import androidx.paging.compose.itemKey
 
-import com.nexdecade.composebase.uiCompose.nonpaging.PokemonItem
+import com.nexdecade.composebase.homePage.presentation.ui.PokemonItem
 
 
 @Composable

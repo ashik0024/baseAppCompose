@@ -5,7 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.nexdecade.composebase.BasePagingRepository
-import com.nexdecade.composebase.network.responseClass.Pokemon
+import com.nexdecade.composebase.homePage.domain.model.response.Pokemon
 import com.nexdecade.composebase.network.retrofit.ApiInterface
 import com.nexdecade.composebase.roomDb.AppDatabase
 import kotlinx.coroutines.flow.Flow

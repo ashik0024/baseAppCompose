@@ -1,7 +1,7 @@
 package com.nexdecade.composebase.network.retrofit
 
 import com.nexdecade.composebase.network.responseClass.PokemonInfo
-import com.nexdecade.composebase.network.responseClass.PokemonListResponse
+import com.nexdecade.composebase.homePage.domain.model.response.PokemonListResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

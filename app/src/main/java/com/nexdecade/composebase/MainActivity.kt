@@ -9,8 +9,7 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.nexdecade.composebase.ui.theme.ComposeBaseTheme
-import com.nexdecade.composebase.uiCompose.nonpaging.PokemonScreen
-import com.nexdecade.composebase.uiCompose.paging.PokemonPagingScreen
+import com.nexdecade.composebase.homePage.presentation.ui.PokemonScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 

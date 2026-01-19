@@ -1,13 +1,12 @@
-package com.nexdecade.composebase.uiCompose.nonpaging
+package com.nexdecade.composebase.homePage.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.nexdecade.composebase.Result
+import com.nexdecade.composebase.homePage.data.repository.PokemonRepoImpl
 import com.nexdecade.composebase.network.repository.PokemonRepository
-import com.nexdecade.composebase.uiCompose.nonpaging.PokemonUiState.*
-import com.nexdecade.composebase.network.responseClass.Pokemon
-import com.nexdecade.composebase.network.services.GetPokemonService
+import com.nexdecade.composebase.homePage.presentation.viewmodel.PokemonUiState.*
+import com.nexdecade.composebase.homePage.domain.model.response.Pokemon
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import kotlinx.coroutines.launch
@@ -18,10 +17,10 @@ import kotlinx.coroutines.flow.asStateFlow
 
 @HiltViewModel
 class PokemonViewModel @Inject constructor(
-    private val repository: PokemonRepository
+    private val repository: PokemonRepoImpl
 ) : ViewModel() {
     
-    private val _uiState = MutableStateFlow<PokemonUiState>(PokemonUiState.Loading)
+    private val _uiState = MutableStateFlow<PokemonUiState>(Loading)
     val uiState: StateFlow<PokemonUiState> = _uiState.asStateFlow()
     
     private val _searchQuery = MutableStateFlow("")
@@ -35,16 +34,16 @@ class PokemonViewModel @Inject constructor(
     
     fun fetchPokemon() {
         viewModelScope.launch {
-            _uiState.value = PokemonUiState.Loading
+            _uiState.value = Loading
             
-            when (val result = repository.getPokemon()) {
+            when (val result = repository.getAllPokemonList()) {
                 is Result.Success -> {
                     fullPokemonList = result.data
-                    _uiState.value = PokemonUiState.Success(result.data)
+                    _uiState.value = Success(result.data)
                 }
                 is Result.Error -> _uiState.value =
-                    PokemonUiState.Error(result.exception.message ?: "Unknown error")
-                Result.Loading -> _uiState.value = PokemonUiState.Loading
+                    Error(result.exception.message ?: "Unknown error")
+                Result.Loading -> _uiState.value = Loading
             }
         }
     }
@@ -58,7 +57,7 @@ class PokemonViewModel @Inject constructor(
         val filtered = if (query.isBlank()) fullPokemonList
         else fullPokemonList.filter { it.name?.contains(query, ignoreCase = true) == true }
         
-        _uiState.value = PokemonUiState.Success(filtered)
+        _uiState.value = Success(filtered)
     }
 }
 

@@ -1,11 +1,9 @@
-package com.nexdecade.composebase.network.responseClass
+package com.nexdecade.composebase.homePage.domain.model.response
 
-import android.annotation.SuppressLint
 import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
-
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -19,4 +17,4 @@ data class Pokemon(
     val name: String = "",
     @SerialName("url")
     val url: String? = "",
-):Parcelable
+): Parcelable

@@ -1,6 +1,7 @@
 package com.nexdecade.composebase.di
 
 
+import com.nexdecade.composebase.homePage.data.remote.PokemonApi
 import com.nexdecade.composebase.network.retrofit.ApiInterface
 import dagger.Module
 import dagger.Provides
@@ -43,5 +44,11 @@ object NetworkModule {
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiInterface {
         return retrofit.create(ApiInterface::class.java)
+    }
+    
+    @Provides
+    @Singleton
+    fun providePokemonApi(retrofit: Retrofit): PokemonApi {
+        return retrofit.create(PokemonApi::class.java)
     }
 }

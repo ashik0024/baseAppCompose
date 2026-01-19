@@ -1,7 +1,7 @@
 package com.nexdecade.composebase.network.services
 
 import com.nexdecade.composebase.network.repository.safeApiCall
-import com.nexdecade.composebase.network.responseClass.Pokemon
+import com.nexdecade.composebase.homePage.domain.model.response.Pokemon
 import com.nexdecade.composebase.network.retrofit.RetrofitClient
 import com.nexdecade.composebase.Result
 

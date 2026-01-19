@@ -6,7 +6,7 @@ import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
 import androidx.room.withTransaction
-import com.nexdecade.composebase.network.responseClass.Pokemon
+import com.nexdecade.composebase.homePage.domain.model.response.Pokemon
 import com.nexdecade.composebase.network.retrofit.ApiInterface
 import com.nexdecade.composebase.roomDb.AppDatabase
 import com.nexdecade.composebase.roomDb.PokemonRemoteKeys

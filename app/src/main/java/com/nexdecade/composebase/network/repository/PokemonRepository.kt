@@ -1,14 +1,14 @@
 package com.nexdecade.composebase.network.repository
 
 import android.util.Log
-import com.nexdecade.composebase.network.responseClass.Pokemon
+import com.nexdecade.composebase.homePage.domain.model.response.Pokemon
 import com.nexdecade.composebase.network.services.GetPokemonService
 import com.nexdecade.composebase.roomDb.PokemonDao
 import com.nexdecade.composebase.Result
 
 import javax.inject.Inject
 
-class PokemonRepository @Inject constructor(
+open class PokemonRepository @Inject constructor(
     private val pokemonDao: PokemonDao,
     private val getPokemonService: GetPokemonService
 ) {

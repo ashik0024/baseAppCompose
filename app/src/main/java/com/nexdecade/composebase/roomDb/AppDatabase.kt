@@ -2,7 +2,7 @@ package com.nexdecade.composebase.roomDb
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import com.nexdecade.composebase.network.responseClass.Pokemon
+import com.nexdecade.composebase.homePage.domain.model.response.Pokemon
 
 @Database(
     entities = [Pokemon::class, PokemonRemoteKeys::class],
